@@ -4,6 +4,7 @@ const tabs = document.querySelectorAll('.operations__tab');
 const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 const nav = document.querySelector('.nav');
+const section1 = document.querySelector('#section--1');
 
 // Page Navbar smooth scrolling - event delegation
 document.querySelector('.nav__links').addEventListener('click', function (e) {
@@ -53,3 +54,14 @@ const handleHover = function (e, opacity) {
 
 nav.addEventListener('mouseover', handleHover.bind(0.7));
 nav.addEventListener('mouseout', handleHover.bind(1));
+
+// Sticky nav
+const initialCoords = section1.getBoundingClientRect();
+
+window.addEventListener('scroll', function () {
+  if (this.window.scrollY > initialCoords.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
